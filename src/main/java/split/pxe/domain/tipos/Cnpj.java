@@ -8,7 +8,7 @@ public record Cnpj(String valor) implements CnpjOuCpf {
     private static final Pattern FORMATO = Pattern.compile("^[A-Za-z0-9]{14}$");
 
     public Cnpj {
-        Formato.exigir(FORMATO, valor, "CNPJ");
+        Formato.exigirSemExpor(FORMATO, valor, "CNPJ");
     }
 
     public CnpjRaiz raiz() {

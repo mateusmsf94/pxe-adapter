@@ -1,6 +1,7 @@
 package split.pxe.domain.tipos;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,14 @@ class CnpjOuCpfTest {
     @Test
     void nuloEAusente() {
         assertThrows(IllegalArgumentException.class, () -> CnpjOuCpf.de(null));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1234567890A", "11222333/00018"})
+    void erroNaoRepeteODocumento(String texto) {
+        // A mensagem vai para o log das malformadas: CPF e CNPJ não podem aparecer nela.
+        var erro = assertThrows(IllegalArgumentException.class, () -> CnpjOuCpf.de(texto));
+        assertFalse(erro.getMessage().contains(texto), erro.getMessage());
     }
 
     @ParameterizedTest

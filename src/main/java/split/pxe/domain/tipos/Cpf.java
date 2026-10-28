@@ -8,6 +8,6 @@ public record Cpf(String valor) implements CnpjOuCpf {
     private static final Pattern FORMATO = Pattern.compile("^\\d{11}$");
 
     public Cpf {
-        Formato.exigir(FORMATO, valor, "CPF");
+        Formato.exigirSemExpor(FORMATO, valor, "CPF");
     }
 }

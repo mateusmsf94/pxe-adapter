@@ -40,6 +40,10 @@ import split.pxe.service.Traducao.MotivoIgnorado.StatusNaoFinal;
  *
  * TODO os caminhos são provisórios: no barramento as operações não têm nome semântico, e sim um
  *  número de OP. Trocar OP_PRELIMINAR e OP_SEGREGACAO pelos números quando forem atribuídos.
+ *
+ * TODO autenticação: as operações estão abertas, e quem alcançar o serviço consegue registrar fatos
+ *  no oracle-service. Falta definir como o barramento se autentica (mTLS, token de serviço) e
+ *  restringir quem pode chamar.
  */
 @Path("/")
 @Consumes(MediaType.APPLICATION_JSON)
